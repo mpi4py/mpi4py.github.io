@@ -4,7 +4,7 @@ mpi4py.futures
 .. module:: mpi4py.futures
    :synopsis: Execute computations concurrently using MPI processes.
 
-.. versionadded:: 2.1.0
+.. versionadded:: 3.0.0
 
 This package provides a high-level interface for asynchronously executing
 callables on a pool of worker processes using MPI for inter-process
@@ -73,7 +73,7 @@ only) thread until they are signaled for completion.
    script code (using the :mod:`runpy` module) under the :mod:`__worker__`
    namespace to define the :mod:`__main__` module. The :mod:`__main__` and
    :mod:`__worker__` modules are added to :data:`sys.modules` (both at the
-   master and worker processes) to ensure proper *picklig* and *unpickling*.
+   master and worker processes) to ensure proper *pickling* and *unpickling*.
 
 .. warning::
 
