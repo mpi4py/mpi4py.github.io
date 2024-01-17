@@ -1,0 +1,9 @@
+url: "https://mip4py.github.io"
+
+plugins:
+  - jekyll-redirect-from
+
+include:
+  - _static
+  - _sources
+  - _templates
