@@ -1,0 +1,62 @@
+name: update
+
+permissions:
+  contents: read
+
+on:  # yamllint disable-line rule:truthy
+  workflow_dispatch:
+    inputs:
+      runid:
+        description: 'GHA docs workflow run ID'
+        required: true
+        type: string
+      push:
+        description: 'Push update'
+        default: false
+        required: true
+        type: boolean
+
+jobs:
+
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Download documentation artifact
+      run: >-
+        gh run download
+           --repo mpi4py/mpi4py
+           --name mpi4py-docs
+           ${{ inputs.runid }}
+
+    - name: Update documentation contents
+      run: |
+        # unarchive
+        docdir=mpi4py-docs
+        unzip -q $docdir.zip
+        mv $docdir/version .
+        version=$(cat version)
+        test ! -d $version
+        mv $docdir $version
+        rm -f stable
+        ln -sf $version stable
+
+    - name: Commit changes
+      run: |
+        # git add + commit
+        git config user.name  "$(git log -1 --pretty=format:%an)"
+        git config user.email "$(git log -1 --pretty=format:%ae)"
+        version=$(cat version)
+        git add $version stable
+        git commit -m $version
+        git show --stat
+
+    - name: Push changes
+      if:   ${{ inputs.push }}
+      run:  git push

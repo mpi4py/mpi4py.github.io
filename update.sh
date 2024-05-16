@@ -1,22 +1,20 @@
 #!/bin/bash
-set -eu
+set -euo pipefail
 
-version=$1
-workdir="$(pwd)"
-if test -d "$version"; then
-    echo "version $version already exists!"
-    exit 1
-fi
-tempdir="$(mktemp -d)"
-trap 'rm -rf $tempdir' EXIT
+error() { echo "error: $1"; exit 1; }
 
-cd "$tempdir"
-baseurl="https://github.com/mpi4py/mpi4py/releases/download"
-curl -sL "$baseurl/$version/mpi4py-$version.tar.gz" | tar xz
+test -n "${1-}" || error "expecting GHA workflow run ID"
+gh run download --repo mpi4py/mpi4py -n mpi4py-docs "$1"
+docdir="mpi4py-docs"
+rm -rf "$docdir"
+unzip -q "$docdir.zip"
 
-cd "$workdir"
-mv "$tempdir/mpi4py-$version/docs" "$version"
+version=$(cat "$docdir/version")
+test ! -d "$version" || error "$version already exists!"
+rm "$docdir/version"
+mv "$docdir" "$version"
+
+rm -f "stable"
 ln -sf "$version" "stable"
-
 git add "$version" "stable"
 git commit -m "$version"
