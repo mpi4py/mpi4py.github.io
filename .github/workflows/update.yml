@@ -34,6 +34,8 @@ jobs:
            --repo mpi4py/mpi4py
            --name mpi4py-docs
            ${{ inputs.runid }}
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
 
     - name: Update documentation contents
       run: |
