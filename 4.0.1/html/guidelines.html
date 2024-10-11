@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Guidelines &#8212; MPI for Python 4.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=def86cc0" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    
+    <script src="_static/documentation_options.js?v=4a3a2942"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=da5f30a5"></script>
+    
+    <link rel="icon" href="_static/mpi4py.svg"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="LICENSE" href="license.html" />
+    <link rel="prev" title="Development" href="develop.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="license.html" title="LICENSE"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="develop.html" title="Development"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MPI for Python 4.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Guidelines</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="guidelines">
+<h1>Guidelines<a class="headerlink" href="#guidelines" title="Link to this heading">¶</a></h1>
+<section id="fair-play">
+<h2>Fair play<a class="headerlink" href="#fair-play" title="Link to this heading">¶</a></h2>
+<section id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Link to this heading">¶</a></h3>
+<p>This section defines Rules of Play for companies and outside developers that
+engage with the mpi4py project. It covers:</p>
+<ul class="simple">
+<li><p>Restrictions on use of the mpi4py name.</p></li>
+<li><p>How and whether to publish a modified distribution.</p></li>
+<li><p>How to make us aware of patched versions.</p></li>
+</ul>
+<p>After reading this section, companies and developers will know what kinds of
+behavior the mpi4py developers and contributors would like to see, and which we
+consider troublesome, bothersome, and unacceptable.</p>
+<p>This document is a close adaptation of <a class="reference external" href="https://numpy.org/neps/nep-0036-fair-play.html">NumPy NEP 36</a>.</p>
+</section>
+<section id="motivation">
+<h3>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">¶</a></h3>
+<p>Occasionally, we learn of modified mpi4py versions and binary distributions
+circulated by outsiders. These patched versions can cause problems to mpi4py
+users (see, e.g., <a class="reference external" href="https://github.com/mpi4py/mpi4py/issues/508">mpi4py/mpi4py#508</a>). When issues like these arise, our
+developers waste time identifying the problematic release, locating
+alterations, and determining an appropriate course of action.</p>
+<p>In addition, packages on the Python Packaging Index are sometimes named such
+that users assume they are sanctioned or maintained by the mpi4py
+developers. We wish to reduce the number of such incidents.</p>
+</section>
+<section id="scope">
+<h3>Scope<a class="headerlink" href="#scope" title="Link to this heading">¶</a></h3>
+<p>This document aims to define a minimal set of rules that, when followed, will
+be considered good-faith efforts in line with the expectations of the mpi4py
+developers and contributors.</p>
+<p>Our hope is that companies and outside developers who feel they need to modify
+mpi4py will first consider contributing to the project, or use alternative
+mechanisms for patching and extending mpi4py.</p>
+<p>When in doubt, please <a class="reference external" href="https://github.com/mpi4py/mpi4py/discussions/">talk to us first</a>. We may suggest an alternative; at
+minimum, we’ll be informed and we may even grant an exception if deemed
+appropriate.</p>
+</section>
+<section id="fair-play-rules">
+<h3>Fair play rules<a class="headerlink" href="#fair-play-rules" title="Link to this heading">¶</a></h3>
+<ol class="arabic">
+<li><p>Do not reuse the mpi4py name for projects not affiliated with the mpi4py
+project.</p>
+<p>At time of writing, there are only a handful of <code class="docutils literal notranslate"><span class="pre">mpi4py</span></code>-named packages
+developed by the mpi4py project, including <code class="docutils literal notranslate"><span class="pre">mpi4py</span></code> and <code class="docutils literal notranslate"><span class="pre">mpi4py-fft</span></code>. We
+ask that outside packages not include the phrase <code class="docutils literal notranslate"><span class="pre">mpi4py</span></code>, i.e., avoid
+names such as <code class="docutils literal notranslate"><span class="pre">mycompany-mpi4py</span></code> or <code class="docutils literal notranslate"><span class="pre">mpi4py-mycompany</span></code>.</p>
+<p>To be clear, this rule only applies to modules (package names); it is
+perfectly acceptable to have a <em>submodule</em> of your own package named
+<code class="docutils literal notranslate"><span class="pre">mycompany.mpi4py</span></code>.</p>
+</li>
+<li><p>Do not publish binary mpi4py wheels on PyPI (<a class="reference external" href="https://pypi.org/">https://pypi.org/</a>).</p>
+<p>We ask companies and outside developers to not publish binary mpi4py wheels
+in the main Python Package Index (<a class="reference external" href="https://pypi.org/">https://pypi.org/</a>) under names such
+<code class="docutils literal notranslate"><span class="pre">mpi4py-mpich</span></code>, <code class="docutils literal notranslate"><span class="pre">mpi4py-openmpi</span></code>, or <code class="docutils literal notranslate"><span class="pre">mpi4py-vendor_mpi</span></code>.</p>
+<p>The usual approaches to build binary Python wheels involve the embedding of
+dependent shared libraries. While such an approach may seem convenient and
+often is, in the particular case of MPI and mpi4py it is ultimately harmful
+to end users. Embedding the MPI shared libraries would prevent the use of
+external, system-provided MPI installations with hardware-specific
+optimizations and site-specific tweaks.</p>
+<p>The MPI Forum is currently discussing the standardization of a proposal for
+an Application Binary Interface (ABI) for MPI, see <a class="reference internal" href="#mpi-abi-paper" id="id2"><span>[mpi-abi-paper]</span></a> and
+<a class="reference internal" href="#mpi-abi-issue" id="id3"><span>[mpi-abi-issue]</span></a>. Such standardization will allow for any binary dependent
+on the MPI library to be used with multiple MPI backends. Once this proposal
+becomes part of the MPI standard, the mpi4py project will consider
+publishing on PyPI binary wheels capable of using any backend MPI
+implementation supporting the new MPI ABI specification. In the mean time,
+mpi4py is currently distributing experimental MPI and mpi4py binary wheels
+on <a class="reference external" href="https://anaconda.org/mpi4py">https://anaconda.org/mpi4py</a>.</p>
+<div role="list" class="citation-list">
+<div class="citation" id="mpi-abi-paper" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">mpi-abi-paper</a><span class="fn-bracket">]</span></span>
+<p>J. Hammond, L. Dalcin, E. Schnetter, M. Pérache, J. B. Besnard,
+J. Brown, G. Brito Gadeschi, S. Byrne, J. Schuchart, and H. Zhou.
+MPI Application Binary Interface Standardization.
+EuroMPI 2023, Bristol, UK, September 2023.
+<a class="reference external" href="https://doi.org/10.1145/3615318.3615319">https://doi.org/10.1145/3615318.3615319</a></p>
+</div>
+<div class="citation" id="mpi-abi-issue" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">mpi-abi-issue</a><span class="fn-bracket">]</span></span>
+<p>MPI Forum GitHub Issue: <em>MPI needs a standard ABI</em>.
+<a class="reference external" href="https://github.com/mpi-forum/mpi-issues/issues/751">https://github.com/mpi-forum/mpi-issues/issues/751</a></p>
+</div>
+</div>
+</li>
+<li><p>Do not republish modified versions of mpi4py.</p>
+<p>Modified versions of mpi4py make it very difficult for the developers to
+address bug reports, since we typically do not know which parts of mpi4py
+have been modified.</p>
+<p>If you have to break this rule (and we implore you not to!), then make it
+clear in the <code class="docutils literal notranslate"><span class="pre">__version__</span></code> tag that you have modified mpi4py, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">mpi4py</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="go">&#39;4.0.0+mycompany.13`</span>
+</pre></div>
+</div>
+<p>We understand that minor patches are often required to make a library work
+inside of a package ecosystem. This is totally acceptable, but we ask that
+no substantive changes are made.</p>
+</li>
+<li><p>Do not extend or modify mpi4py’s API.</p>
+<p>If you absolutely have to break the previous rule, please do not add
+additional functions to the namespace, or modify the API of existing
+functions. Having additional functions exposed in distributed versions is
+confusing for users and developers alike.</p>
+</li>
+</ol>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/mpi4py.svg" alt="Logo of MPI for Python"/>
+            </a></p>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Guidelines</a><ul>
+<li><a class="reference internal" href="#fair-play">Fair play</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#motivation">Motivation</a></li>
+<li><a class="reference internal" href="#scope">Scope</a></li>
+<li><a class="reference internal" href="#fair-play-rules">Fair play rules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="develop.html"
+                          title="previous chapter">Development</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="license.html"
+                          title="next chapter">LICENSE</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="license.html" title="LICENSE"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="develop.html" title="Development"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MPI for Python 4.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Guidelines</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024, Lisandro Dalcin.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    </div>
+  </body>
+</html>

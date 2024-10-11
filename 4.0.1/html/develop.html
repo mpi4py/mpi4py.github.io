@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Development &#8212; MPI for Python 4.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=def86cc0" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    
+    <script src="_static/documentation_options.js?v=4a3a2942"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=da5f30a5"></script>
+    
+    <link rel="icon" href="_static/mpi4py.svg"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Guidelines" href="guidelines.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="guidelines.html" title="Guidelines"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MPI for Python 4.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Development</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="development">
+<h1>Development<a class="headerlink" href="#development" title="Link to this heading">¶</a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
+<p>You need to have the following software properly installed to develop
+<em>MPI for Python</em>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.python.org/">Python</a> 3.6 or above.</p></li>
+<li><p>The <a class="reference external" href="https://cython.org/">Cython</a> compiler.</p></li>
+<li><p>A working <a class="reference external" href="https://www.mpi-forum.org/">MPI</a> implementation like <a class="reference external" href="https://www.mpich.org/">MPICH</a> or <a class="reference external" href="https://www.open-mpi.org/">Open MPI</a>,
+preferably supporting MPI-4 and built with shared/dynamic libraries.</p></li>
+</ul>
+<p>Optionally, consider installing the following packages:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://numpy.org/">NumPy</a> for enabling comprehensive testing of MPI communication.</p></li>
+<li><p><a class="reference external" href="https://cupy.dev/">CuPy</a> for enabling comprehensive testing with a GPU-aware MPI.</p></li>
+<li><p><a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> to build the documentation.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Most routine development tasks like building, installing in
+editable mode, testing, and generating documentation can be
+performed with the <a class="reference external" href="https://github.com/scientific-python/spin">spin</a> developer tool. Run <strong class="command">spin</strong> at
+the top level source directory for a list of available subcommands.</p>
+</div>
+</section>
+<section id="building">
+<h2>Building<a class="headerlink" href="#building" title="Link to this heading">¶</a></h2>
+<p><em>MPI for Python</em> uses <strong>setuptools</strong>-based build system that relies on
+the <code class="file docutils literal notranslate"><span class="pre">setup.py</span></code> file. Some setuptools commands (e.g., <em>build</em>)
+accept additional options:</p>
+<dl class="std cmdoption">
+<dt class="sig sig-object std" id="cmdoption-mpi">
+<span class="sig-name descname"><span class="pre">--mpi</span></span><span class="sig-prename descclassname"><span class="pre">=</span></span><a class="headerlink" href="#cmdoption-mpi" title="Link to this definition">¶</a></dt>
+<dd><p>Lets you pass a section with MPI configuration within a special
+configuration file. Alternatively, you can use the <span class="target" id="index-0"></span><a class="reference internal" href="install.html#envvar-MPICFG"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">MPICFG</span></code></a>
+environment variable.</p>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt class="sig sig-object std" id="cmdoption-mpicc">
+<span class="sig-name descname"><span class="pre">--mpicc</span></span><span class="sig-prename descclassname"><span class="pre">=</span></span><a class="headerlink" href="#cmdoption-mpicc" title="Link to this definition">¶</a></dt>
+<dd><p>Specify the path or name of the <strong class="program">mpicc</strong> C compiler wrapper.
+Alternatively, use the <span class="target" id="index-1"></span><a class="reference internal" href="install.html#envvar-MPICC"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">MPICC</span></code></a> environment variable.</p>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt class="sig sig-object std" id="cmdoption-mpild">
+<span class="sig-name descname"><span class="pre">--mpild</span></span><span class="sig-prename descclassname"><span class="pre">=</span></span><a class="headerlink" href="#cmdoption-mpild" title="Link to this definition">¶</a></dt>
+<dd><p>Specify the full path or name for the MPI-aware C linker.
+Alternatively, use the <span class="target" id="index-2"></span><a class="reference internal" href="install.html#envvar-MPILD"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">MPILD</span></code></a> environment variable. If
+not set, the <strong class="program">mpicc</strong> C compiler wrapper is used for
+linking.</p>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt class="sig sig-object std" id="cmdoption-configure">
+<span class="sig-name descname"><span class="pre">--configure</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-configure" title="Link to this definition">¶</a></dt>
+<dd><p>Runs exhaustive tests for checking about missing MPI types,
+constants, and functions. This option should be passed in order to
+build <em>MPI for Python</em> against old MPI-1, MPI-2, or MPI-3
+implementations, possibly providing a subset of MPI-4.</p>
+</dd></dl>
+
+<p>If you use a MPI implementation providing a <strong class="program">mpicc</strong> C
+compiler wrapper (e.g., MPICH or Open MPI), it will be used for
+compilation and linking. This is the preferred and easiest way to
+build <em>MPI for Python</em>.</p>
+<p>If <strong class="program">mpicc</strong> is found in the executable search path
+(<span class="target" id="index-3"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PATH</span></code> environment variable), simply run the <em>build</em>
+command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python setup.py build
+</pre></div>
+</div>
+<p>If <strong class="program">mpicc</strong> is not in your search path or the compiler wrapper
+has a different name, you can run the <em>build</em> command specifying its
+location, either via the <a class="reference internal" href="#cmdoption-mpicc"><code class="xref std std-option docutils literal notranslate"><span class="pre">--mpicc</span></code></a> command option or using the
+<span class="target" id="index-4"></span><a class="reference internal" href="install.html#envvar-MPICC"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">MPICC</span></code></a> environment variable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python setup.py build --mpicc=/path/to/mpicc
+$ env MPICC=/path/to/mpicc python setup.py build
+</pre></div>
+</div>
+<p>Alternatively, you can provide all the relevant information about your
+MPI implementation by editing the <code class="file docutils literal notranslate"><span class="pre">mpi.cfg</span></code> file located in the
+top level source directory. You can use the default section <code class="docutils literal notranslate"><span class="pre">[mpi]</span></code>
+or add a new custom section, for example <code class="docutils literal notranslate"><span class="pre">[vendor_mpi]</span></code> (see the
+examples provided in the <code class="file docutils literal notranslate"><span class="pre">mpi.cfg</span></code> file as a starting point to
+write your own section):</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[mpi]</span>
+<span class="na">include_dirs</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">/usr/local/mpi/include</span>
+<span class="na">libraries</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s">mpi</span>
+<span class="na">library_dirs</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">/usr/local/mpi/lib</span>
+<span class="na">runtime_library_dirs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/usr/local/mpi/lib</span>
+
+<span class="k">[vendor_mpi]</span>
+<span class="na">include_dirs</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">/opt/mpi/include ...</span>
+<span class="na">libraries</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s">mpi ...</span>
+<span class="na">library_dirs</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">/opt/mpi/lib ...</span>
+<span class="na">runtime_library_dirs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/opt/mpi/lib ...</span>
+
+<span class="na">...</span>
+</pre></div>
+</div>
+<p>and then run the <em>build</em> command specifying you custom
+configuration section:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python setup.py build --mpi=vendor_mpi
+$ env MPICFG=vendor_mpi python setup.py build
+</pre></div>
+</div>
+</section>
+<section id="installing">
+<h2>Installing<a class="headerlink" href="#installing" title="Link to this heading">¶</a></h2>
+<p><em>MPI for Python</em> can be installed in editable mode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m pip install --editable .
+</pre></div>
+</div>
+<p>After modifying Cython sources, an in-place rebuild is needed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python setup.py build --inplace
+</pre></div>
+</div>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading">¶</a></h2>
+<p>To quickly test the installation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mpiexec -n 5 python -m mpi4py.bench helloworld
+Hello, World! I am process 0 of 5 on localhost.
+Hello, World! I am process 1 of 5 on localhost.
+Hello, World! I am process 2 of 5 on localhost.
+Hello, World! I am process 3 of 5 on localhost.
+Hello, World! I am process 4 of 5 on localhost.
+
+$ mpiexec -n 5 python -m mpi4py.bench ringtest -l 10 -n 1048576
+time for 10 loops = 0.00361614 seconds (5 processes, 1048576 bytes)
+</pre></div>
+</div>
+<p>If you installed from a git clone or the source distribution, issuing
+at the command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mpiexec -n 5 python demo/helloworld.py
+</pre></div>
+</div>
+<p>will launch a five-process run of the Python interpreter and run the
+demo script <code class="file docutils literal notranslate"><span class="pre">demo/helloworld.py</span></code> from the source distribution.</p>
+<p>You can also run all the <em>unittest</em> scripts:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mpiexec -n 5 python test/main.py
+</pre></div>
+</div>
+<p>or, if you have the <a class="reference external" href="https://docs.pytest.org/">pytest</a> unit testing framework installed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mpiexec -n 5 pytest
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/mpi4py.svg" alt="Logo of MPI for Python"/>
+            </a></p>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Development</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#building">Building</a></li>
+<li><a class="reference internal" href="#installing">Installing</a></li>
+<li><a class="reference internal" href="#testing">Testing</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="install.html"
+                          title="previous chapter">Installation</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="guidelines.html"
+                          title="next chapter">Guidelines</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="guidelines.html" title="Guidelines"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MPI for Python 4.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Development</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024, Lisandro Dalcin.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    </div>
+  </body>
+</html>
