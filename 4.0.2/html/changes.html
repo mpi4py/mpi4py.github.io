@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CHANGES &#8212; MPI for Python 4.0.2 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    
+    <script src="_static/documentation_options.js?v=e76a598e"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=da5f30a5"></script>
+    
+    <link rel="icon" href="_static/mpi4py.svg"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="LICENSE" href="license.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="license.html" title="LICENSE"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MPI for Python 4.0.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CHANGES</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="changes">
+<span id="id1"></span><h1>CHANGES<a class="headerlink" href="#changes" title="Link to this heading">¶</a></h1>
+<section id="release-4-0-2-2025-02-01">
+<h2>Release 4.0.2 [2025-02-01]<a class="headerlink" href="#release-4-0-2-2025-02-01" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Support MPI-4 features within Intel MPI 2021.14.</p></li>
+<li><p>Various fixes and updates to tests.</p></li>
+<li><p>Minor fixes to typing support.</p></li>
+<li><p>Minor fix to documentation.</p></li>
+</ul>
+</section>
+<section id="release-4-0-1-2024-10-11">
+<h2>Release 4.0.1 [2024-10-11]<a class="headerlink" href="#release-4-0-1-2024-10-11" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Update support for Python 3.13:</p>
+<ul>
+<li><p>Enable Cython 3.1 support for free-threaded CPython.</p></li>
+<li><p>Allow compiling Cython-generated C sources with the full Python C-API.</p></li>
+<li><p>Fix MPI DLL path workarounds on Windows after changes to <code class="docutils literal notranslate"><span class="pre">locals()</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Enhancements to test suite:</p>
+<ul>
+<li><p>Support XML reports via <code class="docutils literal notranslate"><span class="pre">unittest-xml-reporting</span></code>.</p></li>
+<li><p>Add command line options to exclude tests by patterns and files.</p></li>
+<li><p>Refactor Python 2 code to use Python 3 constructs using <code class="docutils literal notranslate"><span class="pre">pyupgrade</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Miscellaneous:</p>
+<ul>
+<li><p>Minor and mostly inconsequential subclass fix in <code class="docutils literal notranslate"><span class="pre">mpi4py.util.pkl5</span></code>.</p></li>
+<li><p>Update compatibility workarounds for legacy MPICH 3.0 release.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="release-4-0-0-2024-07-28">
+<h2>Release 4.0.0 [2024-07-28]<a class="headerlink" href="#release-4-0-0-2024-07-28" title="Link to this heading">¶</a></h2>
+<ul>
+<li><p>New features:</p>
+<ul class="simple">
+<li><p>Add support for the MPI-4.0 standard.</p>
+<ul>
+<li><p>Use large count MPI-4 routines.</p></li>
+<li><p>Add persistent collective communication.</p></li>
+<li><p>Add partitioned point-to-point communication.</p></li>
+<li><p>Add new communicator constructors.</p></li>
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">Session</span></code> class and its methods.</p></li>
+</ul>
+</li>
+<li><p>Add support for the MPI-4.1 standard.</p>
+<ul>
+<li><p>Add non-destructive completion test for multiple requests.</p></li>
+<li><p>Add value-index datatype constructor.</p></li>
+<li><p>Add communicator/session buffer attach/detach/flush.</p></li>
+<li><p>Support for removal of error classes/codes/strings.</p></li>
+<li><p>Support for querying hardware resource information.</p></li>
+</ul>
+</li>
+<li><p>Add preliminary support for the upcoming MPI-5.0 standard.</p>
+<ul>
+<li><p>User-level failure mitigation (ULFM).</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpi4py.util.pool</span></code>: New drop-in replacement for <code class="docutils literal notranslate"><span class="pre">multiprocessing.pool</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpi4py.util.sync</span></code>: New synchronization utilities.</p></li>
+<li><p>Add runtime check for mismatch between <code class="docutils literal notranslate"><span class="pre">mpiexec</span></code> and MPI library.</p></li>
+<li><p>Support <a class="reference external" href="https://scikit-build.readthedocs.io/">scikit-build-core</a> as an alternative build backend.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Support <a class="reference external" href="https://meson-python.readthedocs.io/">meson-python</a> as an alternative build backend.</p></li>
+</ul>
+</li>
+<li><p>Enhancements:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mpi4py.futures</span></code>: Support for parallel tasks.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpi4py.futures</span></code>: Report exception tracebacks in workers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpi4py.util.pkl5</span></code>: Add support for collective communication.</p></li>
+<li><p>Add methods <code class="docutils literal notranslate"><span class="pre">Datatype.fromcode()</span></code>, <code class="docutils literal notranslate"><span class="pre">Datatype.tocode()</span></code> and
+attributes <code class="docutils literal notranslate"><span class="pre">Datatype.typestr</span></code>, <code class="docutils literal notranslate"><span class="pre">Datatype.typechar</span></code> to simplify
+NumPy interoperability for simple cases.</p></li>
+<li><p>Add methods <code class="docutils literal notranslate"><span class="pre">Comm.Create_errhandler()</span></code>, <code class="docutils literal notranslate"><span class="pre">Win.Create_errhandler()</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">File.Create_errhandler()</span></code> to create custom error handlers.</p></li>
+<li><p>Add support for pickle serialization of instances of MPI types.
+All instances of <code class="docutils literal notranslate"><span class="pre">Datatype</span></code>, <code class="docutils literal notranslate"><span class="pre">Info</span></code>, and <code class="docutils literal notranslate"><span class="pre">Status</span></code> can be
+serialized. Instances of <code class="docutils literal notranslate"><span class="pre">Op</span></code> can be serialized only if created
+through <code class="docutils literal notranslate"><span class="pre">mpi4py</span></code> by calling <code class="docutils literal notranslate"><span class="pre">Op.Create()</span></code>. Instances of other MPI
+types can be serialized only if they reference predefined handles.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">handle</span></code> attribute and <code class="docutils literal notranslate"><span class="pre">fromhandle()</span></code> class method to MPI
+classes to ease interoperability with external code. The handle
+value is an unsigned integer guaranteed to fit on the platform’s
+<code class="docutils literal notranslate"><span class="pre">uintptr_t</span></code> C type.</p></li>
+<li><p>Add lowercase <code class="docutils literal notranslate"><span class="pre">free()</span></code> method to MPI classes to ease MPI object
+deallocation and cleanup. This method eventually attempts to call
+<code class="docutils literal notranslate"><span class="pre">Free()</span></code>, but only if the object’s MPI handle is not a null or
+predefined handle, and such call is allowed within the World Model
+init/finalize.</p></li>
+</ul>
+</li>
+<li><p>Backward-incompatible changes:</p>
+<ul class="simple">
+<li><p>Python 2 is no longer supported, Python 3.6+ is required, but
+typing stubs are supported for Python 3.8+.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Intracomm.Create_group()</span></code> method is no longer defined in the
+base <code class="docutils literal notranslate"><span class="pre">Comm</span></code> class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Group.Compare()</span></code> and <code class="docutils literal notranslate"><span class="pre">Comm.Compare()</span></code> are no longer class methods
+but instance methods. Existing codes using the former class
+methods are expected to continue working.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Group.Translate_ranks()</span></code> is no longer a class method but an
+instance method. Existing codes using the former class method are
+expected to continue working.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">LB</span></code> and <code class="docutils literal notranslate"><span class="pre">UB</span></code> datatypes are no longer available, use
+<code class="docutils literal notranslate"><span class="pre">Datatype.Create_resized()</span></code> instead.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">HOST</span></code> predefined attribute key is no longer available.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">MPI.memory</span></code> class has been renamed to <code class="docutils literal notranslate"><span class="pre">MPI.buffer</span></code>. The old
+name is still available as an alias to the new name.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">mpi4py.dl</span></code> module is no longer available.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">mpi4py.get_config</span></code> function returns an empty dictionary.</p></li>
+</ul>
+</li>
+<li><p>Miscellaneous:</p>
+<ul class="simple">
+<li><p>The project is now licensed under the BSD-3-Clause license. This
+change is fairly inconsequential for users and distributors. It
+simply adds an additional clause against using contributor names
+for promotional purposes without their consent.</p></li>
+<li><p>Add a new guidelines section to documentation laying out new fair
+play rules. These rules ask companies and outside developers to
+refrain from reusing the <code class="docutils literal notranslate"><span class="pre">mpi4py</span></code> name in unaffiliated projects,
+publishing binary mpi4py wheels on the main Python Package Index
+(PyPI), and distributing modified versions with incompatible or
+extended API changes. The primary motivation of these rules is to
+avoid fragmentation and end-user confusion.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="release-3-1-6-2024-04-14">
+<h2>Release 3.1.6 [2024-04-14]<a class="headerlink" href="#release-3-1-6-2024-04-14" title="Link to this heading">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is the last release supporting Python 2.</p>
+</div>
+<ul class="simple">
+<li><p>Fix various build issues.</p></li>
+</ul>
+</section>
+<section id="release-3-1-5-2023-10-04">
+<h2>Release 3.1.5 [2023-10-04]<a class="headerlink" href="#release-3-1-5-2023-10-04" title="Link to this heading">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is the last release supporting Python 2.</p>
+</div>
+<ul class="simple">
+<li><p>Rebuild C sources with Cython 0.29.36 to support Python 3.12.</p></li>
+</ul>
+</section>
+<section id="release-3-1-4-2022-11-02">
+<h2>Release 3.1.4 [2022-11-02]<a class="headerlink" href="#release-3-1-4-2022-11-02" title="Link to this heading">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is the last release supporting Python 2.</p>
+</div>
+<ul class="simple">
+<li><p>Rebuild C sources with Cython 0.29.32 to support Python 3.11.</p></li>
+<li><p>Fix contiguity check for DLPack and CAI buffers.</p></li>
+<li><p>Workaround build failures with setuptools v60.</p></li>
+</ul>
+</section>
+<section id="release-3-1-3-2021-11-25">
+<h2>Release 3.1.3 [2021-11-25]<a class="headerlink" href="#release-3-1-3-2021-11-25" title="Link to this heading">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is the last release supporting Python 2.</p>
+</div>
+<ul class="simple">
+<li><p>Add missing support for <code class="docutils literal notranslate"><span class="pre">MPI.BOTTOM</span></code> to generalized all-to-all collectives.</p></li>
+</ul>
+</section>
+<section id="release-3-1-2-2021-11-04">
+<h2>Release 3.1.2 [2021-11-04]<a class="headerlink" href="#release-3-1-2-2021-11-04" title="Link to this heading">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is the last release supporting Python 2.</p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mpi4py.futures</span></code>: Add <code class="docutils literal notranslate"><span class="pre">_max_workers</span></code> property to <code class="docutils literal notranslate"><span class="pre">MPIPoolExecutor</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpi4py.util.dtlib</span></code>: Fix computation of alignment for predefined datatypes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpi4py.util.pkl5</span></code>: Fix deadlock when using <code class="docutils literal notranslate"><span class="pre">ssend()</span></code> + <code class="docutils literal notranslate"><span class="pre">mprobe()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpi4py.util.pkl5</span></code>: Add environment variable <code class="docutils literal notranslate"><span class="pre">MPI4PY_PICKLE_THRESHOLD</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpi4py.rc</span></code>: Interpret <code class="docutils literal notranslate"><span class="pre">&quot;y&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;n&quot;</span></code> strings as boolean values.</p></li>
+<li><p>Fix/add typemap/typestr for <code class="docutils literal notranslate"><span class="pre">MPI.WCHAR</span></code>/<code class="docutils literal notranslate"><span class="pre">MPI.COUNT</span></code> datatypes.</p></li>
+<li><p>Minor fixes and additions to documentation.</p></li>
+<li><p>Minor fixes to typing support.</p></li>
+<li><p>Support for local version identifier (PEP-440).</p></li>
+</ul>
+</section>
+<section id="release-3-1-1-2021-08-14">
+<h2>Release 3.1.1 [2021-08-14]<a class="headerlink" href="#release-3-1-1-2021-08-14" title="Link to this heading">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is the last release supporting Python 2.</p>
+</div>
+<ul class="simple">
+<li><p>Fix typo in Requires-Python package metadata.</p></li>
+<li><p>Regenerate C sources with Cython 0.29.24.</p></li>
+</ul>
+</section>
+<section id="release-3-1-0-2021-08-12">
+<h2>Release 3.1.0 [2021-08-12]<a class="headerlink" href="#release-3-1-0-2021-08-12" title="Link to this heading">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is the last release supporting Python 2.</p>
+</div>
+<ul class="simple">
+<li><p>New features:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpi4py.util</span></code>: New package collecting miscellaneous utilities.</p></li>
+</ul>
+</li>
+<li><p>Enhancements:</p>
+<ul>
+<li><p>Add pickle-based <code class="docutils literal notranslate"><span class="pre">Request.waitsome()</span></code> and <code class="docutils literal notranslate"><span class="pre">Request.testsome()</span></code>.</p></li>
+<li><p>Add lowercase methods <code class="docutils literal notranslate"><span class="pre">Request.get_status()</span></code> and <code class="docutils literal notranslate"><span class="pre">Request.cancel()</span></code>.</p></li>
+<li><p>Support for passing Python GPU arrays compliant with the <a class="reference external" href="https://github.com/dmlc/dlpack">DLPack</a> data
+interchange mechanism (<a class="reference external" href="https://data-apis.org/array-api/latest/design_topics/data_interchange.html">link</a>) and the <code class="docutils literal notranslate"><span class="pre">__cuda_array_interface__</span></code>
+(CAI) standard (<a class="reference external" href="https://numba.readthedocs.io/en/stable/cuda/cuda_array_interface.html">link</a>) to uppercase methods. This support requires
+that mpi4py is built against <a class="reference external" href="https://developer.nvidia.com/blog/introduction-cuda-aware-mpi/">CUDA-aware MPI</a> implementations. This
+feature is currently experimental and subject to future changes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpi4py.futures</span></code>: Add support for initializers and canceling futures at shutdown.
+Environment variables names now follow the pattern <code class="docutils literal notranslate"><span class="pre">MPI4PY_FUTURES_*</span></code>, the
+previous <code class="docutils literal notranslate"><span class="pre">MPI4PY_*</span></code> names are deprecated.</p></li>
+<li><p>Add type annotations to Cython code. The first line of the docstring of functions
+and methods displays a signature including type annotations.</p></li>
+<li><p>Add companion stub files to support type checkers.</p></li>
+<li><p>Support for weak references.</p></li>
+</ul>
+</li>
+<li><p>Miscellaneous:</p>
+<ul>
+<li><p>Add a new mpi4py publication (<a class="reference external" href="https://doi.org/10.1109/MCSE.2021.3083216">link</a>) to the citation listing.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="release-3-0-3-2019-11-04">
+<h2>Release 3.0.3 [2019-11-04]<a class="headerlink" href="#release-3-0-3-2019-11-04" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Regenerate Cython wrappers to support Python 3.8.</p></li>
+</ul>
+</section>
+<section id="release-3-0-2-2019-06-11">
+<h2>Release 3.0.2 [2019-06-11]<a class="headerlink" href="#release-3-0-2-2019-06-11" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Bug fixes:</p>
+<ul>
+<li><p>Fix handling of readonly buffers in support for Python 2 legacy
+buffer interface. The issue triggers only when using a buffer-like
+object that is readonly and does not export the new Python 3
+buffer interface.</p></li>
+<li><p>Fix build issues with Open MPI 4.0.x series related to removal of
+many MPI-1 symbols deprecated in MPI-2 and removed in MPI-3.</p></li>
+<li><p>Minor documentation fixes.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="release-3-0-1-2019-02-15">
+<h2>Release 3.0.1 [2019-02-15]<a class="headerlink" href="#release-3-0-1-2019-02-15" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Bug fixes:</p>
+<ul>
+<li><p>Fix <code class="docutils literal notranslate"><span class="pre">Comm.scatter()</span></code> and other collectives corrupting input send
+list. Add safety measures to prevent related issues in global
+reduction operations.</p></li>
+<li><p>Fix error-checking code for counts in <code class="docutils literal notranslate"><span class="pre">Op.Reduce_local()</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Enhancements:</p>
+<ul>
+<li><p>Map size-specific Python/NumPy typecodes to MPI datatypes.</p></li>
+<li><p>Allow partial specification of target list/tuple arguments in the
+various <code class="docutils literal notranslate"><span class="pre">Win</span></code> RMA methods.</p></li>
+<li><p>Workaround for removal of <code class="docutils literal notranslate"><span class="pre">MPI_{LB|UB}</span></code> in Open MPI 4.0.</p></li>
+<li><p>Support for Microsoft MPI v10.0.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="release-3-0-0-2017-11-08">
+<h2>Release 3.0.0 [2017-11-08]<a class="headerlink" href="#release-3-0-0-2017-11-08" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>New features:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpi4py.futures</span></code>: Execute computations asynchronously using a pool
+of MPI processes. This package is based on <code class="docutils literal notranslate"><span class="pre">concurrent.futures</span></code>
+from the Python standard library.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpi4py.run</span></code>: Run Python code and abort execution in case of
+unhandled exceptions to prevent deadlocks.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpi4py.bench</span></code>: Run basic MPI benchmarks and tests.</p></li>
+</ul>
+</li>
+<li><p>Enhancements:</p>
+<ul>
+<li><p>Lowercase, pickle-based collective communication calls are now
+thread-safe through the use of fine-grained locking.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">MPI</span></code> module now exposes a <code class="docutils literal notranslate"><span class="pre">memory</span></code> type which is a
+lightweight variant of the builtin <code class="docutils literal notranslate"><span class="pre">memoryview</span></code> type, but
+exposes both the legacy Python 2 and the modern Python 3 buffer
+interface under a Python 2 runtime.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">MPI.Comm.Alltoallw()</span></code> method now uses <code class="docutils literal notranslate"><span class="pre">count=1</span></code> and
+<code class="docutils literal notranslate"><span class="pre">displ=0</span></code> as defaults, assuming that messages are specified
+through user-defined datatypes.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Request.Wait[all]()</span></code> methods now return <code class="docutils literal notranslate"><span class="pre">True</span></code> to match
+the interface of <code class="docutils literal notranslate"><span class="pre">Request.Test[all]()</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Win</span></code> class now implements the Python buffer interface.</p></li>
+</ul>
+</li>
+<li><p>Backward-incompatible changes:</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">buf</span></code> argument of the <code class="docutils literal notranslate"><span class="pre">MPI.Comm.recv()</span></code> method is
+deprecated, passing anything but <code class="docutils literal notranslate"><span class="pre">None</span></code> emits a warning.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">MPI.Win.memory</span></code> property was removed, use the
+<code class="docutils literal notranslate"><span class="pre">MPI.Win.tomemory()</span></code> method instead.</p></li>
+<li><p>Executing <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">mpi4py</span></code> in the command line is now
+equivalent to <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">mpi4py.run</span></code>. For the former behavior,
+use <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">mpi4py.bench</span></code>.</p></li>
+<li><p>Python 2.6 and 3.2 are no longer supported. The <code class="docutils literal notranslate"><span class="pre">mpi4py.MPI</span></code>
+module may still build and partially work, but other pure-Python
+modules under the <code class="docutils literal notranslate"><span class="pre">mpi4py</span></code> namespace will not.</p></li>
+<li><p>Windows: Remove support for legacy MPICH2, Open MPI, and DeinoMPI.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="release-2-0-0-2015-10-18">
+<h2>Release 2.0.0 [2015-10-18]<a class="headerlink" href="#release-2-0-0-2015-10-18" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Support for MPI-3 features.</p>
+<ul>
+<li><p>Matched probes and receives.</p></li>
+<li><p>Nonblocking collectives.</p></li>
+<li><p>Neighborhood collectives.</p></li>
+<li><p>New communicator constructors.</p></li>
+<li><p>Request-based RMA operations.</p></li>
+<li><p>New RMA communication and synchronisation calls.</p></li>
+<li><p>New window constructors.</p></li>
+<li><p>New datatype constructor.</p></li>
+<li><p>New C++ boolean and floating complex datatypes.</p></li>
+</ul>
+</li>
+<li><p>Support for MPI-2 features not included in previous releases.</p>
+<ul>
+<li><p>Generalized All-to-All collective (<code class="docutils literal notranslate"><span class="pre">Comm.Alltoallw()</span></code>)</p></li>
+<li><p>User-defined data representations (<code class="docutils literal notranslate"><span class="pre">Register_datarep()</span></code>)</p></li>
+</ul>
+</li>
+<li><p>New scalable implementation of reduction operations for Python
+objects. This code is based on binomial tree algorithms using
+point-to-point communication and duplicated communicator
+contexts. To disable this feature, use
+<code class="docutils literal notranslate"><span class="pre">mpi4py.rc.fast_reduce</span> <span class="pre">=</span> <span class="pre">False</span></code>.</p></li>
+<li><p>Backward-incompatible changes:</p>
+<ul>
+<li><p>Python 2.4, 2.5, 3.0 and 3.1 are no longer supported.</p></li>
+<li><p>Default MPI error handling policies are overridden. After import,
+mpi4py sets the <code class="docutils literal notranslate"><span class="pre">ERRORS_RETURN</span></code> error handler in <code class="docutils literal notranslate"><span class="pre">COMM_SELF</span></code>
+and <code class="docutils literal notranslate"><span class="pre">COMM_WORLD</span></code>, as well as any new <code class="docutils literal notranslate"><span class="pre">Comm</span></code>, <code class="docutils literal notranslate"><span class="pre">Win</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">File</span></code> instance created through mpi4py, thus effectively
+ignoring the MPI rules about error handler inheritance.  This way,
+MPI errors translate to Python exceptions.  To disable this
+behavior and use the standard MPI error handling rules, use
+<code class="docutils literal notranslate"><span class="pre">mpi4py.rc.errors</span> <span class="pre">=</span> <span class="pre">'default'</span></code>.</p></li>
+<li><p>Change signature of all send methods,
+<code class="docutils literal notranslate"><span class="pre">dest</span></code> is a required argument.</p></li>
+<li><p>Change signature of all receive and probe methods,
+<code class="docutils literal notranslate"><span class="pre">source</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">ANY_SOURCE</span></code>,
+<code class="docutils literal notranslate"><span class="pre">tag</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">ANY_TAG</span></code>.</p></li>
+<li><p>Change signature of send lowercase-spelling methods,
+<code class="docutils literal notranslate"><span class="pre">obj</span></code> arguments are not mandatory.</p></li>
+<li><p>Change signature of recv lowercase-spelling methods,
+renamed ‘obj’ arguments to ‘buf’.</p></li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">Request.Waitsome()</span></code> and <code class="docutils literal notranslate"><span class="pre">Request.Testsome()</span></code>
+to return <code class="docutils literal notranslate"><span class="pre">None</span></code> or <code class="docutils literal notranslate"><span class="pre">list</span></code>.</p></li>
+<li><p>Change signature of all lowercase-spelling collectives,
+<code class="docutils literal notranslate"><span class="pre">sendobj</span></code> arguments are now mandatory,
+<code class="docutils literal notranslate"><span class="pre">recvobj</span></code> arguments were removed.</p></li>
+<li><p>Reduction operations <code class="docutils literal notranslate"><span class="pre">MAXLOC</span></code> and <code class="docutils literal notranslate"><span class="pre">MINLOC</span></code> are no longer
+special-cased in lowercase-spelling methods <code class="docutils literal notranslate"><span class="pre">Comm.[all]reduce()</span></code>
+and <code class="docutils literal notranslate"><span class="pre">Comm.[ex]scan()</span></code>, the input object must be specified as a
+tuple <code class="docutils literal notranslate"><span class="pre">(obj,</span> <span class="pre">location)</span></code>.</p></li>
+<li><p>Change signature of name publishing functions.
+The new signatures are
+<code class="docutils literal notranslate"><span class="pre">Publish_name(service_name,</span> <span class="pre">port_name,</span> <span class="pre">info=INFO_NULL)</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Unpublish_name(service_name,</span> <span class="pre">port_name,</span> <span class="pre">info=INFO_NULL)`</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Win</span></code> instances now cache Python objects exposing memory by
+keeping references instead of using MPI attribute caching.</p></li>
+<li><p>Change signature of <code class="docutils literal notranslate"><span class="pre">Win.Lock()</span></code>.
+The new signature is
+<code class="docutils literal notranslate"><span class="pre">Win.Lock(rank,</span> <span class="pre">lock_type=LOCK_EXCLUSIVE,</span> <span class="pre">assertion=0)</span></code>.</p></li>
+<li><p>Move <code class="docutils literal notranslate"><span class="pre">Cartcomm.Map()</span></code> to <code class="docutils literal notranslate"><span class="pre">Intracomm.Cart_map()</span></code>.</p></li>
+<li><p>Move <code class="docutils literal notranslate"><span class="pre">Graphcomm.Map()</span></code> to <code class="docutils literal notranslate"><span class="pre">Intracomm.Graph_map()</span></code>.</p></li>
+<li><p>Remove the <code class="docutils literal notranslate"><span class="pre">mpi4py.MPE</span></code> module.</p></li>
+<li><p>Rename the Cython definition file for use with <code class="docutils literal notranslate"><span class="pre">cimport</span></code>
+statement from <code class="docutils literal notranslate"><span class="pre">mpi_c.pxd</span></code> to <code class="docutils literal notranslate"><span class="pre">libmpi.pxd</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="release-1-3-1-2013-08-07">
+<h2>Release 1.3.1 [2013-08-07]<a class="headerlink" href="#release-1-3-1-2013-08-07" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Regenerate C wrappers with Cython 0.19.1 to support Python 3.3.</p></li>
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">*.pxd</span></code> files in <code class="docutils literal notranslate"><span class="pre">&lt;site-packages&gt;/mpi4py</span></code> to ease the
+support for Cython’s <code class="docutils literal notranslate"><span class="pre">cimport</span></code> statement in code requiring to
+access mpi4py internals.</p></li>
+<li><p>As a side-effect of using Cython 0.19.1, ancient Python 2.3 is no
+longer supported. If you really need it, you can install an older
+Cython and run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">build_src</span> <span class="pre">--force</span></code>.</p></li>
+</ul>
+</section>
+<section id="release-1-3-2012-01-20">
+<h2>Release 1.3 [2012-01-20]<a class="headerlink" href="#release-1-3-2012-01-20" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Now <code class="docutils literal notranslate"><span class="pre">Comm.recv()</span></code> accept a buffer to receive the message.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">Comm.irecv()</span></code> and <code class="docutils literal notranslate"><span class="pre">Request.{wait|test}[any|all]()</span></code>.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">Intracomm.Spawn_multiple()</span></code>.</p></li>
+<li><p>Better buffer handling for PEP 3118 and legacy buffer interfaces.</p></li>
+<li><p>Add support for attribute attribute caching on communicators,
+datatypes and windows.</p></li>
+<li><p>Install MPI-enabled Python interpreter as
+<code class="docutils literal notranslate"><span class="pre">&lt;path&gt;/mpi4py/bin/python-mpi</span></code>.</p></li>
+<li><p>Windows: Support for building with Open MPI.</p></li>
+</ul>
+</section>
+<section id="release-1-2-2-2010-09-13">
+<h2>Release 1.2.2 [2010-09-13]<a class="headerlink" href="#release-1-2-2-2010-09-13" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">mpi4py.get_config()</span></code> to retrieve information (compiler
+wrappers, includes, libraries, etc) about the MPI implementation
+employed to build mpi4py.</p></li>
+<li><p>Workaround Python libraries with missing GILState-related API calls
+in case of non-threaded Python builds.</p></li>
+<li><p>Windows: look for MPICH2, DeinoMPI, Microsoft HPC Pack at their
+default install locations under %ProgramFiles.</p></li>
+<li><p>MPE: fix hacks related to old API’s, these hacks are broken when MPE
+is built with a MPI implementations other than MPICH2.</p></li>
+<li><p>HP-MPI: fix for missing Fortran datatypes, use dlopen() to load the
+MPI shared library before MPI_Init()</p></li>
+<li><p>Many distutils-related fixes, cleanup, and enhancements, better
+logics to find MPI compiler wrappers.</p></li>
+<li><p>Support for <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">mpi4py</span></code>.</p></li>
+</ul>
+</section>
+<section id="release-1-2-1-2010-02-26">
+<h2>Release 1.2.1 [2010-02-26]<a class="headerlink" href="#release-1-2-1-2010-02-26" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Fix declaration in Cython include file. This declaration, while
+valid for Cython, broke the simple-minded parsing used in
+conf/mpidistutils.py to implement configure-tests for availability
+of MPI symbols.</p></li>
+<li><p>Update SWIG support and make it compatible with Python 3. Also
+generate an warning for SWIG &lt; 1.3.28.</p></li>
+<li><p>Fix distutils-related issues in Mac OS X. Now ARCHFLAGS environment
+variable is honored of all Python’s <code class="docutils literal notranslate"><span class="pre">config/Makefile</span></code> variables.</p></li>
+<li><p>Fix issues with Open MPI &lt; 1.4.2 related to error checking and
+<code class="docutils literal notranslate"><span class="pre">MPI_XXX_NULL</span></code> handles.</p></li>
+</ul>
+</section>
+<section id="release-1-2-2009-12-29">
+<h2>Release 1.2 [2009-12-29]<a class="headerlink" href="#release-1-2-2009-12-29" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Automatic MPI datatype discovery for NumPy arrays and PEP-3118
+buffers. Now buffer-like objects can be messaged directly, it is no
+longer required to explicitly pass a 2/3-list/tuple like <code class="docutils literal notranslate"><span class="pre">[data,</span>
+<span class="pre">MPI.DOUBLE]</span></code>, or <code class="docutils literal notranslate"><span class="pre">[data,</span> <span class="pre">count,</span> <span class="pre">MPI.DOUBLE]</span></code>. Only basic types
+are supported, i.e., all C/C99-native signed/unsigned integral types
+and single/double precision real/complex floating types. Many thanks
+to Eilif Muller for the initial feedback.</p></li>
+<li><p>Nonblocking send of pickled Python objects. Many thanks to Andreas
+Kloeckner for the initial patch and enlightening discussion about
+this enhancement.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Request</span></code> instances now hold a reference to the Python object
+exposing the buffer involved in point-to-point communication or
+parallel I/O. Many thanks to Andreas Kloeckner for the initial
+feedback.</p></li>
+<li><p>Support for logging of user-defined states and events using <a class="reference external" href="https://www.mcs.anl.gov/research/projects/perfvis/">MPE</a>. Runtime
+(i.e., without requiring a recompile!)  activation of logging of all
+MPI calls is supported in POSIX platforms implementing <code class="docutils literal notranslate"><span class="pre">dlopen()</span></code>.</p></li>
+<li><p>Support for all the new features in MPI-2.2 (new C99 and F90
+datatypes, distributed graph topology, local reduction operation,
+and other minor enhancements).</p></li>
+<li><p>Fix the annoying issues related to Open MPI and Python dynamic
+loading of extension modules in platforms supporting <code class="docutils literal notranslate"><span class="pre">dlopen()</span></code>.</p></li>
+<li><p>Fix SLURM dynamic loading issues on SiCortex. Many thanks to Ian
+Langmore for providing me shell access.</p></li>
+</ul>
+</section>
+<section id="release-1-1-0-2009-06-06">
+<h2>Release 1.1.0 [2009-06-06]<a class="headerlink" href="#release-1-1-0-2009-06-06" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Fix bug in <code class="docutils literal notranslate"><span class="pre">Comm.Iprobe()</span></code> that caused segfaults as Python C-API
+calls were issued with the GIL released (issue #2).</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">Comm.bsend()</span></code> and <code class="docutils literal notranslate"><span class="pre">Comm.ssend()</span></code> for buffered and
+synchronous send semantics when communicating general Python
+objects.</p></li>
+<li><p>Now the call <code class="docutils literal notranslate"><span class="pre">Info.Get(key)</span></code> return a <em>single</em> value (i.e, instead
+of a 2-tuple); this value is <code class="docutils literal notranslate"><span class="pre">None</span></code> if <code class="docutils literal notranslate"><span class="pre">key</span></code> is not in the
+<code class="docutils literal notranslate"><span class="pre">Info</span></code> object, or a string otherwise. Previously, the call
+redundantly returned <code class="docutils literal notranslate"><span class="pre">(None,</span> <span class="pre">False)</span></code> for missing key-value pairs;
+<code class="docutils literal notranslate"><span class="pre">None</span></code> is enough to signal a missing entry.</p></li>
+<li><p>Add support for parametrized Fortran datatypes.</p></li>
+<li><p>Add support for decoding user-defined datatypes.</p></li>
+<li><p>Add support for user-defined reduction operations on memory
+buffers. However, at most 16 user-defined reduction operations
+can be created. Ask the author for more room if you need it.</p></li>
+</ul>
+</section>
+<section id="release-1-0-0-2009-03-20">
+<h2>Release 1.0.0 [2009-03-20]<a class="headerlink" href="#release-1-0-0-2009-03-20" title="Link to this heading">¶</a></h2>
+<p>This is the fist release of the all-new, Cython-based, implementation
+of <em>MPI for Python</em>. Unfortunately, this implementation is not
+backward-compatible with the previous one. The list below summarizes
+the more important changes that can impact user codes.</p>
+<ul>
+<li><p>Some communication calls had <em>overloaded</em> functionality. Now there
+is a clear distinction between communication of general Python
+object with <em>pickle</em>, and (fast, near C-speed) communication of
+buffer-like objects (e.g., NumPy arrays).</p>
+<ul class="simple">
+<li><p>for communicating general Python objects, you have to use
+all-lowercase methods, like <code class="docutils literal notranslate"><span class="pre">send()</span></code>, <code class="docutils literal notranslate"><span class="pre">recv()</span></code>, <code class="docutils literal notranslate"><span class="pre">bcast()</span></code>,
+etc.</p></li>
+<li><p>for communicating array data, you have to use <code class="docutils literal notranslate"><span class="pre">Send()</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Recv()</span></code>, <code class="docutils literal notranslate"><span class="pre">Bcast()</span></code>, etc. methods. Buffer arguments to these
+calls must be explicitly specified by using a 2/3-list/tuple like
+<code class="docutils literal notranslate"><span class="pre">[data,</span> <span class="pre">MPI.DOUBLE]</span></code>, or <code class="docutils literal notranslate"><span class="pre">[data,</span> <span class="pre">count,</span> <span class="pre">MPI.DOUBLE]</span></code> (the
+former one uses the byte-size of <code class="docutils literal notranslate"><span class="pre">data</span></code> and the extent of the
+MPI datatype to define the <code class="docutils literal notranslate"><span class="pre">count</span></code>).</p></li>
+</ul>
+</li>
+<li><p>Indexing a communicator with an integer returned a special object
+associating the communication with a target rank, alleviating you
+from specifying source/destination/root arguments in point-to-point
+and collective communications. This functionality is no longer
+available, expressions like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Send</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Recv</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Bcast</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>have to be replaced by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">Send</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">Recv</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">Bcast</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Automatic MPI initialization (i.e., at import time) requests the
+maximum level of MPI thread support (i.e., it is done by calling
+<code class="docutils literal notranslate"><span class="pre">MPI_Init_thread()</span></code> and passing <code class="docutils literal notranslate"><span class="pre">MPI_THREAD_MULTIPLE</span></code>). In case
+you need to change this behavior, you can tweak the contents of the
+<code class="docutils literal notranslate"><span class="pre">mpi4py.rc</span></code> module.</p></li>
+<li><p>In order to obtain the values of predefined attributes attached to
+the world communicator, now you have to use the <code class="docutils literal notranslate"><span class="pre">Get_attr()</span></code>
+method on the <code class="docutils literal notranslate"><span class="pre">MPI.COMM_WORLD</span></code> instance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tag_ub</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">Get_attr</span><span class="p">(</span><span class="n">MPI</span><span class="o">.</span><span class="n">TAG_UB</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>In the previous implementation, <code class="docutils literal notranslate"><span class="pre">MPI.COMM_WORLD</span></code> and
+<code class="docutils literal notranslate"><span class="pre">MPI.COMM_SELF</span></code> were associated to <strong>duplicates</strong> of the (C-level)
+<code class="docutils literal notranslate"><span class="pre">MPI_COMM_WORLD</span></code> and <code class="docutils literal notranslate"><span class="pre">MPI_COMM_SELF</span></code> predefined communicator
+handles. Now this is no longer the case, <code class="docutils literal notranslate"><span class="pre">MPI.COMM_WORLD</span></code> and
+<code class="docutils literal notranslate"><span class="pre">MPI.COMM_SELF</span></code> proxies the <strong>actual</strong> <code class="docutils literal notranslate"><span class="pre">MPI_COMM_WORLD</span></code> and
+<code class="docutils literal notranslate"><span class="pre">MPI_COMM_SELF</span></code> handles.</p></li>
+<li><p>Convenience aliases <code class="docutils literal notranslate"><span class="pre">MPI.WORLD</span></code> and <code class="docutils literal notranslate"><span class="pre">MPI.SELF</span></code> were removed. Use
+instead <code class="docutils literal notranslate"><span class="pre">MPI.COMM_WORLD</span></code> and <code class="docutils literal notranslate"><span class="pre">MPI.COMM_SELF</span></code>.</p></li>
+<li><p>Convenience constants <code class="docutils literal notranslate"><span class="pre">MPI.WORLD_SIZE</span></code> and <code class="docutils literal notranslate"><span class="pre">MPI.WORLD_RANK</span></code> were
+removed. Use instead <code class="docutils literal notranslate"><span class="pre">MPI.COMM_WORLD.Get_size()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">MPI.COMM_WORLD.Get_rank()</span></code>.</p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/mpi4py.svg" alt="Logo of MPI for Python"/>
+            </a></p>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">CHANGES</a></li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="license.html"
+                          title="previous chapter">LICENSE</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="license.html" title="LICENSE"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MPI for Python 4.0.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CHANGES</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Lisandro Dalcin.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    </div>
+  </body>
+</html>
