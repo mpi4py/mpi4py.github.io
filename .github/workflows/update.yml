@@ -36,6 +36,7 @@ jobs:
            ${{ inputs.run-id }}
       env:
         GITHUB_TOKEN: ${{ github.token }}
+      working-directory: mpi4py
 
     - name: Update documentation contents
       run: |
@@ -48,6 +49,7 @@ jobs:
         mv $docdir $version
         rm -f stable
         ln -sf $version stable
+      working-directory: mpi4py
 
     - name: Commit changes
       run: |
@@ -57,6 +59,7 @@ jobs:
         version=$(cat version)
         git add $version stable
         git commit -m $version
+      working-directory: mpi4py
 
     - name: Show changes
       run:  git show --stat

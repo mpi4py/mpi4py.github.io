@@ -3,6 +3,8 @@ set -euo pipefail
 
 error() { echo "error: $1"; exit 1; }
 
+cd mpi4py
+
 test -n "${1-}" || error "expecting GHA workflow run ID"
 gh run download --repo mpi4py/mpi4py -n mpi4py-docs "$1"
 docdir="mpi4py-docs"
