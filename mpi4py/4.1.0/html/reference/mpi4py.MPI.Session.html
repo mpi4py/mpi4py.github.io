@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>mpi4py.MPI.Session &#8212; MPI for Python 4.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    
+    <script src="../_static/documentation_options.js?v=3c33c51c"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=da5f30a5"></script>
+    
+    <link rel="icon" href="../_static/mpi4py.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mpi4py.MPI.Status" href="mpi4py.MPI.Status.html" />
+    <link rel="prev" title="mpi4py.MPI.Request" href="mpi4py.MPI.Request.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpi4py.MPI.Status.html" title="mpi4py.MPI.Status"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mpi4py.MPI.Request.html" title="mpi4py.MPI.Request"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MPI for Python 4.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../reference.html" >Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="mpi4py.MPI.html" accesskey="U">mpi4py.MPI</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">mpi4py.MPI.Session</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="mpi4py-mpi-session">
+<h1>mpi4py.MPI.Session<a class="headerlink" href="#mpi4py-mpi-session" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpi4py.MPI.</span></span><span class="sig-name descname"><span class="pre">Session</span></span><a class="headerlink" href="#mpi4py.MPI.Session" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Session context.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.__new__">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.__new__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>session</strong> (<a class="reference internal" href="#mpi4py.MPI.Session" title="mpi4py.MPI.Session"><em>Session</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><em>None</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Self" title="(in Python v3.13)"><em>Self</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods Summary</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.Attach_buffer" title="mpi4py.MPI.Session.Attach_buffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Attach_buffer</span></code></a>(buf)</p></td>
+<td><p>Attach a user-provided buffer for sending in buffered mode.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.Call_errhandler" title="mpi4py.MPI.Session.Call_errhandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Call_errhandler</span></code></a>(errorcode)</p></td>
+<td><p>Call the error handler installed on a session.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.Create_errhandler" title="mpi4py.MPI.Session.Create_errhandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Create_errhandler</span></code></a>(errhandler_fn)</p></td>
+<td><p>Create a new error handler for sessions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.Create_group" title="mpi4py.MPI.Session.Create_group"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Create_group</span></code></a>(pset_name)</p></td>
+<td><p>Create a new group from session and process set.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.Detach_buffer" title="mpi4py.MPI.Session.Detach_buffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Detach_buffer</span></code></a>()</p></td>
+<td><p>Remove an existing attached buffer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.Finalize" title="mpi4py.MPI.Session.Finalize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Finalize</span></code></a>()</p></td>
+<td><p>Finalize a session.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.Flush_buffer" title="mpi4py.MPI.Session.Flush_buffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Flush_buffer</span></code></a>()</p></td>
+<td><p>Block until all buffered messages have been transmitted.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.Get_errhandler" title="mpi4py.MPI.Session.Get_errhandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Get_errhandler</span></code></a>()</p></td>
+<td><p>Get the error handler for a session.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.Get_info" title="mpi4py.MPI.Session.Get_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Get_info</span></code></a>()</p></td>
+<td><p>Return the current hints for a session.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.Get_nth_pset" title="mpi4py.MPI.Session.Get_nth_pset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Get_nth_pset</span></code></a>(n[, info])</p></td>
+<td><p>Name of the <em>n</em>-th process set.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.Get_num_psets" title="mpi4py.MPI.Session.Get_num_psets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Get_num_psets</span></code></a>([info])</p></td>
+<td><p>Number of available process sets.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.Get_pset_info" title="mpi4py.MPI.Session.Get_pset_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Get_pset_info</span></code></a>(pset_name)</p></td>
+<td><p>Return the current hints for a session and process set.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.Iflush_buffer" title="mpi4py.MPI.Session.Iflush_buffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Iflush_buffer</span></code></a>()</p></td>
+<td><p>Nonblocking flush for buffered messages.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.Init" title="mpi4py.MPI.Session.Init"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Init</span></code></a>([info, errhandler])</p></td>
+<td><p>Create a new session.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.Set_errhandler" title="mpi4py.MPI.Session.Set_errhandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Set_errhandler</span></code></a>(errhandler)</p></td>
+<td><p>Set the error handler for a session.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.f2py" title="mpi4py.MPI.Session.f2py"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f2py</span></code></a>(arg)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.free" title="mpi4py.MPI.Session.free"><code class="xref py py-obj docutils literal notranslate"><span class="pre">free</span></code></a>()</p></td>
+<td><p>Call <a class="reference internal" href="#mpi4py.MPI.Session.Finalize" title="mpi4py.MPI.Session.Finalize"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">Finalize</span></code></a> if not null.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.fromhandle" title="mpi4py.MPI.Session.fromhandle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromhandle</span></code></a>(handle)</p></td>
+<td><p>Create object from MPI handle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.fromint" title="mpi4py.MPI.Session.fromint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromint</span></code></a>(arg, /)</p></td>
+<td><p>Translate integer handle to object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.py2f" title="mpi4py.MPI.Session.py2f"><code class="xref py py-obj docutils literal notranslate"><span class="pre">py2f</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.toint" title="mpi4py.MPI.Session.toint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toint</span></code></a>()</p></td>
+<td><p>Translate object to integer handle.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes Summary</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mpi4py.MPI.Session.handle" title="mpi4py.MPI.Session.handle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handle</span></code></a></p></td>
+<td><p>MPI handle.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods Documentation</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.Attach_buffer">
+<span class="sig-name descname"><span class="pre">Attach_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.Attach_buffer" title="Link to this definition">¶</a></dt>
+<dd><p>Attach a user-provided buffer for sending in buffered mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>buf</strong> (<a class="reference internal" href="../mpi4py.typing.html#mpi4py.typing.Buffer" title="mpi4py.typing.Buffer"><em>Buffer</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><em>None</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.Call_errhandler">
+<span class="sig-name descname"><span class="pre">Call_errhandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">errorcode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.Call_errhandler" title="Link to this definition">¶</a></dt>
+<dd><p>Call the error handler installed on a session.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>errorcode</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.Create_errhandler">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Create_errhandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">errhandler_fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.Create_errhandler" title="Link to this definition">¶</a></dt>
+<dd><p>Create a new error handler for sessions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>errhandler_fn</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.13)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference internal" href="#mpi4py.MPI.Session" title="mpi4py.MPI.Session"><em>Session</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><em>None</em></a><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="mpi4py.MPI.Errhandler.html#mpi4py.MPI.Errhandler" title="mpi4py.MPI.Errhandler"><em>Errhandler</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.Create_group">
+<span class="sig-name descname"><span class="pre">Create_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pset_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.Create_group" title="Link to this definition">¶</a></dt>
+<dd><p>Create a new group from session and process set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pset_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="mpi4py.MPI.Group.html#mpi4py.MPI.Group" title="mpi4py.MPI.Group"><em>Group</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.Detach_buffer">
+<span class="sig-name descname"><span class="pre">Detach_buffer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.Detach_buffer" title="Link to this definition">¶</a></dt>
+<dd><p>Remove an existing attached buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../mpi4py.typing.html#mpi4py.typing.Buffer" title="mpi4py.typing.Buffer">Buffer</a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.Finalize">
+<span class="sig-name descname"><span class="pre">Finalize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.Finalize" title="Link to this definition">¶</a></dt>
+<dd><p>Finalize a session.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.Flush_buffer">
+<span class="sig-name descname"><span class="pre">Flush_buffer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.Flush_buffer" title="Link to this definition">¶</a></dt>
+<dd><p>Block until all buffered messages have been transmitted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.Get_errhandler">
+<span class="sig-name descname"><span class="pre">Get_errhandler</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.Get_errhandler" title="Link to this definition">¶</a></dt>
+<dd><p>Get the error handler for a session.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mpi4py.MPI.Errhandler.html#mpi4py.MPI.Errhandler" title="mpi4py.MPI.Errhandler"><em>Errhandler</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.Get_info">
+<span class="sig-name descname"><span class="pre">Get_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.Get_info" title="Link to this definition">¶</a></dt>
+<dd><p>Return the current hints for a session.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mpi4py.MPI.Info.html#mpi4py.MPI.Info" title="mpi4py.MPI.Info"><em>Info</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.Get_nth_pset">
+<span class="sig-name descname"><span class="pre">Get_nth_pset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">INFO_NULL</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.Get_nth_pset" title="Link to this definition">¶</a></dt>
+<dd><p>Name of the <em>n</em>-th process set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>info</strong> (<a class="reference internal" href="mpi4py.MPI.Info.html#mpi4py.MPI.Info" title="mpi4py.MPI.Info"><em>Info</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.Get_num_psets">
+<span class="sig-name descname"><span class="pre">Get_num_psets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">INFO_NULL</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.Get_num_psets" title="Link to this definition">¶</a></dt>
+<dd><p>Number of available process sets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>info</strong> (<a class="reference internal" href="mpi4py.MPI.Info.html#mpi4py.MPI.Info" title="mpi4py.MPI.Info"><em>Info</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.Get_pset_info">
+<span class="sig-name descname"><span class="pre">Get_pset_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pset_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.Get_pset_info" title="Link to this definition">¶</a></dt>
+<dd><p>Return the current hints for a session and process set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pset_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="mpi4py.MPI.Info.html#mpi4py.MPI.Info" title="mpi4py.MPI.Info"><em>Info</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.Iflush_buffer">
+<span class="sig-name descname"><span class="pre">Iflush_buffer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.Iflush_buffer" title="Link to this definition">¶</a></dt>
+<dd><p>Nonblocking flush for buffered messages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mpi4py.MPI.Request.html#mpi4py.MPI.Request" title="mpi4py.MPI.Request"><em>Request</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.Init">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">INFO_NULL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errhandler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.Init" title="Link to this definition">¶</a></dt>
+<dd><p>Create a new session.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>info</strong> (<a class="reference internal" href="mpi4py.MPI.Info.html#mpi4py.MPI.Info" title="mpi4py.MPI.Info"><em>Info</em></a>)</p></li>
+<li><p><strong>errhandler</strong> (<a class="reference internal" href="mpi4py.MPI.Errhandler.html#mpi4py.MPI.Errhandler" title="mpi4py.MPI.Errhandler"><em>Errhandler</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><em>None</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Self" title="(in Python v3.13)"><em>Self</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.Set_errhandler">
+<span class="sig-name descname"><span class="pre">Set_errhandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">errhandler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.Set_errhandler" title="Link to this definition">¶</a></dt>
+<dd><p>Set the error handler for a session.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>errhandler</strong> (<a class="reference internal" href="mpi4py.MPI.Errhandler.html#mpi4py.MPI.Errhandler" title="mpi4py.MPI.Errhandler"><em>Errhandler</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.f2py">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">f2py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.f2py" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>arg</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#mpi4py.MPI.Session" title="mpi4py.MPI.Session"><em>Session</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.free">
+<span class="sig-name descname"><span class="pre">free</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.free" title="Link to this definition">¶</a></dt>
+<dd><p>Call <a class="reference internal" href="#mpi4py.MPI.Session.Finalize" title="mpi4py.MPI.Session.Finalize"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">Finalize</span></code></a> if not null.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.fromhandle">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fromhandle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.fromhandle" title="Link to this definition">¶</a></dt>
+<dd><p>Create object from MPI handle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#mpi4py.MPI.Session" title="mpi4py.MPI.Session"><em>Session</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.fromint">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fromint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.fromint" title="Link to this definition">¶</a></dt>
+<dd><p>Translate integer handle to object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>arg</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#mpi4py.MPI.Session" title="mpi4py.MPI.Session"><em>Session</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.py2f">
+<span class="sig-name descname"><span class="pre">py2f</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.py2f" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.toint">
+<span class="sig-name descname"><span class="pre">toint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.MPI.Session.toint" title="Link to this definition">¶</a></dt>
+<dd><p>Translate object to integer handle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Attributes Documentation</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mpi4py.MPI.Session.handle">
+<span class="sig-name descname"><span class="pre">handle</span></span><a class="headerlink" href="#mpi4py.MPI.Session.handle" title="Link to this definition">¶</a></dt>
+<dd><p>MPI handle.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/mpi4py.svg" alt="Logo of MPI for Python"/>
+            </a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="mpi4py.MPI.Request.html"
+                          title="previous chapter">mpi4py.MPI.Request</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="mpi4py.MPI.Status.html"
+                          title="next chapter">mpi4py.MPI.Status</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpi4py.MPI.Status.html" title="mpi4py.MPI.Status"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mpi4py.MPI.Request.html" title="mpi4py.MPI.Request"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MPI for Python 4.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../reference.html" >Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="mpi4py.MPI.html" >mpi4py.MPI</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">mpi4py.MPI.Session</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Lisandro Dalcin.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>
