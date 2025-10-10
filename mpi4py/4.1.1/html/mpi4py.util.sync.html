@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>mpi4py.util.sync &#8212; MPI for Python 4.1.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    
+    <script src="_static/documentation_options.js?v=58fc1558"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=da5f30a5"></script>
+    
+    <link rel="icon" href="_static/mpi4py.svg"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="mpi4py.run" href="mpi4py.run.html" />
+    <link rel="prev" title="mpi4py.util.pool" href="mpi4py.util.pool.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpi4py.run.html" title="mpi4py.run"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mpi4py.util.pool.html" title="mpi4py.util.pool"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MPI for Python 4.1.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="mpi4py.util.html" accesskey="U">mpi4py.util</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">mpi4py.util.sync</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-mpi4py.util.sync">
+<span id="mpi4py-util-sync"></span><h1>mpi4py.util.sync<a class="headerlink" href="#module-mpi4py.util.sync" title="Link to this heading">¶</a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0.0.</span></p>
+</div>
+<p>The <a class="reference internal" href="#module-mpi4py.util.sync" title="mpi4py.util.sync: Synchronization utilities."><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpi4py.util.sync</span></code></a> module provides parallel synchronization
+utilities.</p>
+<section id="sequential-execution">
+<h2>Sequential execution<a class="headerlink" href="#sequential-execution" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Sequential">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpi4py.util.sync.</span></span><span class="sig-name descname"><span class="pre">Sequential</span></span><a class="headerlink" href="#mpi4py.util.sync.Sequential" title="Link to this definition">¶</a></dt>
+<dd><p>Sequential execution.</p>
+<p>Context manager for sequential execution within a group of MPI processes.</p>
+<p>The implementation is based in MPI-1 point-to-point communication. A process
+with rank <em>i</em> waits in a blocking receive until the previous process rank
+<em>i-1</em> finish executing and signals the next rank <em>i</em> with a send.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Sequential.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">comm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Sequential.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize sequential execution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>comm</strong> (<a class="reference internal" href="reference/mpi4py.MPI.Intracomm.html#mpi4py.MPI.Intracomm" title="mpi4py.MPI.Intracomm"><em>Intracomm</em></a>) – Intracommunicator context.</p></li>
+<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Tag for point-to-point communication.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Sequential.__enter__">
+<span class="sig-name descname"><span class="pre">__enter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Sequential.__enter__" title="Link to this definition">¶</a></dt>
+<dd><p>Enter sequential execution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Self" title="(in Python v3.14)"><em>Self</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Sequential.__exit__">
+<span class="sig-name descname"><span class="pre">__exit__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">exc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Sequential.__exit__" title="Link to this definition">¶</a></dt>
+<dd><p>Exit sequential execution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>exc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><em>object</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Sequential.begin">
+<span class="sig-name descname"><span class="pre">begin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Sequential.begin" title="Link to this definition">¶</a></dt>
+<dd><p>Begin sequential execution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Sequential.end">
+<span class="sig-name descname"><span class="pre">end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Sequential.end" title="Link to this definition">¶</a></dt>
+<dd><p>End sequential execution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="global-counter">
+<h2>Global counter<a class="headerlink" href="#global-counter" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Counter">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpi4py.util.sync.</span></span><span class="sig-name descname"><span class="pre">Counter</span></span><a class="headerlink" href="#mpi4py.util.sync.Counter" title="Link to this definition">¶</a></dt>
+<dd><p>Global counter.</p>
+<p>Produce consecutive values within a group of MPI processes. The counter
+interface is close to that of <a class="reference external" href="https://docs.python.org/3/library/itertools.html#itertools.count" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">itertools.count</span></code></a>.</p>
+<p>The implementation is based in MPI-3 one-sided operations. A root process
+(typically rank <code class="docutils literal notranslate"><span class="pre">0</span></code>) holds the counter, and its value is queried and
+incremented with an atomic RMA <em>fetch-and-add</em> operation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Counter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">typecode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'i'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">COMM_SELF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">INFO_NULL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Counter.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize global counter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Start value.</p></li>
+<li><p><strong>step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Increment value.</p></li>
+<li><p><strong>typecode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Type code as defined in the <a class="reference external" href="https://docs.python.org/3/library/array.html#module-array" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">array</span></code></a> module.</p></li>
+<li><p><strong>comm</strong> (<a class="reference internal" href="reference/mpi4py.MPI.Intracomm.html#mpi4py.MPI.Intracomm" title="mpi4py.MPI.Intracomm"><em>Intracomm</em></a>) – Intracommunicator context.</p></li>
+<li><p><strong>info</strong> (<a class="reference internal" href="reference/mpi4py.MPI.Info.html#mpi4py.MPI.Info" title="mpi4py.MPI.Info"><em>Info</em></a>) – Info object for RMA context creation.</p></li>
+<li><p><strong>root</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Process rank holding the counter memory.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Counter.__iter__">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Counter.__iter__" title="Link to this definition">¶</a></dt>
+<dd><p>Implement <code class="docutils literal notranslate"><span class="pre">iter(self)</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Self" title="(in Python v3.14)"><em>Self</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Counter.__next__">
+<span class="sig-name descname"><span class="pre">__next__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Counter.__next__" title="Link to this definition">¶</a></dt>
+<dd><p>Implement <code class="docutils literal notranslate"><span class="pre">next(self)</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Counter.next">
+<span class="sig-name descname"><span class="pre">next</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Counter.next" title="Link to this definition">¶</a></dt>
+<dd><p>Return current value and increment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><em>None</em></a>) – Increment value.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The counter value before incrementing.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Counter.free">
+<span class="sig-name descname"><span class="pre">free</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Counter.free" title="Link to this definition">¶</a></dt>
+<dd><p>Free counter resources.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="mutual-exclusion">
+<h2>Mutual exclusion<a class="headerlink" href="#mutual-exclusion" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Mutex">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpi4py.util.sync.</span></span><span class="sig-name descname"><span class="pre">Mutex</span></span><a class="headerlink" href="#mpi4py.util.sync.Mutex" title="Link to this definition">¶</a></dt>
+<dd><p>Mutual exclusion.</p>
+<p>Establish a critical section or mutual exclusion among MPI processes.</p>
+<p>The mutex interface is close to that of <a class="reference external" href="https://docs.python.org/3/library/threading.html#threading.Lock" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">threading.Lock</span></code></a> and
+<a class="reference external" href="https://docs.python.org/3/library/threading.html#threading.RLock" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">threading.RLock</span></code></a>, allowing the use of either recursive or non-recursive
+mutual exclusion. However, a mutex should be used within a group of MPI
+processes, not threads.</p>
+<p>In non-recursive mode, the semantics of <a class="reference internal" href="#mpi4py.util.sync.Mutex" title="mpi4py.util.sync.Mutex"><code class="xref any py py-class docutils literal notranslate"><span class="pre">Mutex</span></code></a> are somewhat different than
+these of <a class="reference external" href="https://docs.python.org/3/library/threading.html#threading.Lock" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">threading.Lock</span></code></a>:</p>
+<ul class="simple">
+<li><p>Once acquired, a mutex is held and owned by a process until released.</p></li>
+<li><p>Trying to acquire a mutex already held raises <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">RuntimeError</span></code></a>.</p></li>
+<li><p>Trying to release a mutex not yet held raises <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">RuntimeError</span></code></a>.</p></li>
+</ul>
+<p>This mutex implementation uses the scalable and fair spinlock algorithm from
+<a class="reference internal" href="#mcs-paper" id="id1"><span>[mcs-paper]</span></a> and took inspiration from the MPI-3 RMA implementation of
+<a class="reference internal" href="#uam-book" id="id2"><span>[uam-book]</span></a>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Mutex.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">COMM_SELF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">INFO_NULL</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Mutex.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize mutex object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>comm</strong> (<a class="reference internal" href="reference/mpi4py.MPI.Intracomm.html#mpi4py.MPI.Intracomm" title="mpi4py.MPI.Intracomm"><em>Intracomm</em></a>) – Intracommunicator context.</p></li>
+<li><p><strong>recursive</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – Whether to allow recursive acquisition.</p></li>
+<li><p><strong>info</strong> (<a class="reference internal" href="reference/mpi4py.MPI.Info.html#mpi4py.MPI.Info" title="mpi4py.MPI.Info"><em>Info</em></a>) – Info object for RMA context creation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Mutex.__enter__">
+<span class="sig-name descname"><span class="pre">__enter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Mutex.__enter__" title="Link to this definition">¶</a></dt>
+<dd><p>Acquire mutex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Self" title="(in Python v3.14)"><em>Self</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Mutex.__exit__">
+<span class="sig-name descname"><span class="pre">__exit__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">exc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Mutex.__exit__" title="Link to this definition">¶</a></dt>
+<dd><p>Release mutex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>exc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><em>object</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Mutex.acquire">
+<span class="sig-name descname"><span class="pre">acquire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blocking</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Mutex.acquire" title="Link to this definition">¶</a></dt>
+<dd><p>Acquire mutex, blocking or non-blocking.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>blocking</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">True</span></code></a>, block until the mutex is held.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">True</span></code></a> if the mutex is held, <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">False</span></code></a> otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Mutex.release">
+<span class="sig-name descname"><span class="pre">release</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Mutex.release" title="Link to this definition">¶</a></dt>
+<dd><p>Release mutex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Mutex.locked">
+<span class="sig-name descname"><span class="pre">locked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Mutex.locked" title="Link to this definition">¶</a></dt>
+<dd><p>Return whether the mutex is held.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Mutex.count">
+<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Mutex.count" title="Link to this definition">¶</a></dt>
+<dd><p>Return the recursion count.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Mutex.free">
+<span class="sig-name descname"><span class="pre">free</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Mutex.free" title="Link to this definition">¶</a></dt>
+<dd><p>Free mutex resources.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div role="list" class="citation-list">
+<div class="citation" id="mcs-paper" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">mcs-paper</a><span class="fn-bracket">]</span></span>
+<p>John M. Mellor-Crummey and Michael L. Scott.
+Algorithms for scalable synchronization on shared-memory multiprocessors.
+ACM Transactions on Computer Systems, 9(1):21-65, February 1991.
+<a class="reference external" href="https://doi.org/10.1145/103727.103729">https://doi.org/10.1145/103727.103729</a></p>
+</div>
+<div class="citation" id="uam-book" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">uam-book</a><span class="fn-bracket">]</span></span>
+<p>William Gropp, Torsten Hoefler, Rajeev Thakur, Ewing Lusk.
+Using Advanced MPI - Modern Features of the Message-Passing Interface.
+Chapter 4, Section 4.7, Pages 130-131. The MIT Press, November 2014.
+<a class="reference external" href="https://mitpress.mit.edu/9780262527637/using-advanced-mpi/">https://mitpress.mit.edu/9780262527637/using-advanced-mpi/</a></p>
+</div>
+</div>
+</section>
+<section id="condition-variable">
+<h2>Condition variable<a class="headerlink" href="#condition-variable" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Condition">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpi4py.util.sync.</span></span><span class="sig-name descname"><span class="pre">Condition</span></span><a class="headerlink" href="#mpi4py.util.sync.Condition" title="Link to this definition">¶</a></dt>
+<dd><p>Condition variable.</p>
+<p>A condition variable allows one or more MPI processes to wait until they are
+notified by another processes.</p>
+<p>The condition variable interface is close to that of <a class="reference external" href="https://docs.python.org/3/library/threading.html#threading.Condition" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">threading.Condition</span></code></a>,
+allowing the use of either recursive or non-recursive mutual exclusion.
+However, the condition variable should be used within a group of MPI
+processes, not threads.</p>
+<p>This condition variable implementation uses a MPI-3 RMA-based scalable and
+fair circular queue algorithm to track the set of waiting processes.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Condition.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">COMM_SELF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">INFO_NULL</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Condition.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize condition variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mutex</strong> (<a class="reference internal" href="#mpi4py.util.sync.Mutex" title="mpi4py.util.sync.Mutex"><em>Mutex</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><em>None</em></a>) – Mutual exclusion object.</p></li>
+<li><p><strong>recursive</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – Whether to allow recursive acquisition.</p></li>
+<li><p><strong>comm</strong> (<a class="reference internal" href="reference/mpi4py.MPI.Intracomm.html#mpi4py.MPI.Intracomm" title="mpi4py.MPI.Intracomm"><em>Intracomm</em></a>) – Intracommunicator context.</p></li>
+<li><p><strong>info</strong> (<a class="reference internal" href="reference/mpi4py.MPI.Info.html#mpi4py.MPI.Info" title="mpi4py.MPI.Info"><em>Info</em></a>) – Info object for RMA context creation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Condition.__enter__">
+<span class="sig-name descname"><span class="pre">__enter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Condition.__enter__" title="Link to this definition">¶</a></dt>
+<dd><p>Acquire the underlying mutex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Self" title="(in Python v3.14)"><em>Self</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Condition.__exit__">
+<span class="sig-name descname"><span class="pre">__exit__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">exc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Condition.__exit__" title="Link to this definition">¶</a></dt>
+<dd><p>Release the underlying mutex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>exc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><em>object</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Condition.acquire">
+<span class="sig-name descname"><span class="pre">acquire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blocking</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Condition.acquire" title="Link to this definition">¶</a></dt>
+<dd><p>Acquire the underlying mutex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>blocking</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Condition.release">
+<span class="sig-name descname"><span class="pre">release</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Condition.release" title="Link to this definition">¶</a></dt>
+<dd><p>Release the underlying mutex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Condition.locked">
+<span class="sig-name descname"><span class="pre">locked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Condition.locked" title="Link to this definition">¶</a></dt>
+<dd><p>Return whether the underlying mutex is held.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Condition.wait">
+<span class="sig-name descname"><span class="pre">wait</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Condition.wait" title="Link to this definition">¶</a></dt>
+<dd><p>Wait until notified by another process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Always <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">True</span></code></a>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a>[True]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Condition.wait_for">
+<span class="sig-name descname"><span class="pre">wait_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Condition.wait_for" title="Link to this definition">¶</a></dt>
+<dd><p>Wait until a predicate evaluates to <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">True</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>predicate</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.14)"><em>Callable</em></a><em>[</em><em>[</em><em>]</em><em>, </em><a class="reference internal" href="mpi4py.typing.html#mpi4py.typing.T" title="mpi4py.typing.T"><em>T</em></a><em>]</em>) – callable returning a boolean.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The result of predicate once it evaluates to <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">True</span></code></a>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mpi4py.typing.html#mpi4py.typing.T" title="mpi4py.typing.T"><em>T</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Condition.notify">
+<span class="sig-name descname"><span class="pre">notify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Condition.notify" title="Link to this definition">¶</a></dt>
+<dd><p>Wake up one or more processes waiting on this condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Maximum number of processes to wake up.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The actual number of processes woken up.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Condition.notify_all">
+<span class="sig-name descname"><span class="pre">notify_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Condition.notify_all" title="Link to this definition">¶</a></dt>
+<dd><p>Wake up all processes waiting on this condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The actual number of processes woken up.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Condition.free">
+<span class="sig-name descname"><span class="pre">free</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Condition.free" title="Link to this definition">¶</a></dt>
+<dd><p>Free condition resources.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="semaphore-object">
+<h2>Semaphore object<a class="headerlink" href="#semaphore-object" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Semaphore">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpi4py.util.sync.</span></span><span class="sig-name descname"><span class="pre">Semaphore</span></span><a class="headerlink" href="#mpi4py.util.sync.Semaphore" title="Link to this definition">¶</a></dt>
+<dd><p>Semaphore object.</p>
+<p>A semaphore object manages an internal counter which is decremented by each
+<a class="reference internal" href="#mpi4py.util.sync.Semaphore.acquire" title="mpi4py.util.sync.Semaphore.acquire"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">acquire()</span></code></a> call and incremented by each <a class="reference internal" href="#mpi4py.util.sync.Semaphore.release" title="mpi4py.util.sync.Semaphore.release"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">release()</span></code></a> call. The internal
+counter never reaches a value below zero; when <a class="reference internal" href="#mpi4py.util.sync.Semaphore.acquire" title="mpi4py.util.sync.Semaphore.acquire"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">acquire()</span></code></a> finds that it is
+zero, it blocks and waits until some other process calls <a class="reference internal" href="#mpi4py.util.sync.Semaphore.release" title="mpi4py.util.sync.Semaphore.release"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">release()</span></code></a>.</p>
+<p>The semaphore interface is close to that of <a class="reference external" href="https://docs.python.org/3/library/threading.html#threading.Semaphore" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">threading.Semaphore</span></code></a> and
+<a class="reference external" href="https://docs.python.org/3/library/threading.html#threading.BoundedSemaphore" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">threading.BoundedSemaphore</span></code></a>, allowing the use of either bounded (default)
+or unbounded semaphores. With a bounded semaphore, the internal counter
+never exceeds its initial value; otherwise <a class="reference internal" href="#mpi4py.util.sync.Semaphore.release" title="mpi4py.util.sync.Semaphore.release"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">release()</span></code></a> raises <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">ValueError</span></code></a>.</p>
+<p>This semaphore implementation uses a global <a class="reference internal" href="#mpi4py.util.sync.Counter" title="mpi4py.util.sync.Counter"><code class="xref any py py-class docutils literal notranslate"><span class="pre">Counter</span></code></a> and a <a class="reference internal" href="#mpi4py.util.sync.Condition" title="mpi4py.util.sync.Condition"><code class="xref any py py-class docutils literal notranslate"><span class="pre">Condition</span></code></a>
+variable to handle waiting and and notification.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Semaphore.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">COMM_SELF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">INFO_NULL</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Semaphore.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize semaphore object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Initial value for internal counter.</p></li>
+<li><p><strong>bounded</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – Bound internal counter to initial value.</p></li>
+<li><p><strong>comm</strong> (<a class="reference internal" href="reference/mpi4py.MPI.Intracomm.html#mpi4py.MPI.Intracomm" title="mpi4py.MPI.Intracomm"><em>Intracomm</em></a>) – Intracommunicator context.</p></li>
+<li><p><strong>info</strong> (<a class="reference internal" href="reference/mpi4py.MPI.Info.html#mpi4py.MPI.Info" title="mpi4py.MPI.Info"><em>Info</em></a>) – Info object for RMA context creation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Semaphore.__enter__">
+<span class="sig-name descname"><span class="pre">__enter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Semaphore.__enter__" title="Link to this definition">¶</a></dt>
+<dd><p>Acquire semaphore.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Self" title="(in Python v3.14)"><em>Self</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Semaphore.__exit__">
+<span class="sig-name descname"><span class="pre">__exit__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">exc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Semaphore.__exit__" title="Link to this definition">¶</a></dt>
+<dd><p>Release semaphore.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>exc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><em>object</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Semaphore.acquire">
+<span class="sig-name descname"><span class="pre">acquire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blocking</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Semaphore.acquire" title="Link to this definition">¶</a></dt>
+<dd><p>Acquire semaphore, decrementing the internal counter by one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>blocking</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">True</span></code></a>, block until the semaphore is acquired.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">True</span></code></a> if the semaphore is acquired, <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.14)"><code class="xref any docutils literal notranslate"><span class="pre">False</span></code></a> otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Semaphore.release">
+<span class="sig-name descname"><span class="pre">release</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Semaphore.release" title="Link to this definition">¶</a></dt>
+<dd><p>Release semaphore, incrementing the internal counter by one or more.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Increment for the internal counter.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mpi4py.util.sync.Semaphore.free">
+<span class="sig-name descname"><span class="pre">free</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpi4py.util.sync.Semaphore.free" title="Link to this definition">¶</a></dt>
+<dd><p>Free semaphore resources.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)">None</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="test-sync-1">
+<div class="code-block-caption"><span class="caption-text"><code class="file docutils literal notranslate"><span class="pre">test-sync-1.py</span></code></span><a class="headerlink" href="#test-sync-1" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">mpi4py</span><span class="w"> </span><span class="kn">import</span> <span class="n">MPI</span>
+<span class="hll"><span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">mpi4py.util.sync</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">Sequential</span>
+</span><span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">comm</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span>
+<span class="linenos"> 5</span>
+<span class="hll"><span class="linenos"> 6</span><span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">comm</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos"> 7</span><span class="k">with</span> <span class="n">Sequential</span><span class="p">(</span><span class="n">comm</span><span class="p">):</span>
+</span><span class="hll"><span class="linenos"> 8</span>   <span class="n">value</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos"> 9</span><span class="n">counter</span><span class="o">.</span><span class="n">free</span><span class="p">()</span>
+</span><span class="linenos">10</span>
+<span class="linenos">11</span><span class="k">assert</span> <span class="n">comm</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="n">value</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="test-sync-2">
+<div class="code-block-caption"><span class="caption-text"><code class="file docutils literal notranslate"><span class="pre">test-sync-2.py</span></code></span><a class="headerlink" href="#test-sync-2" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">mpi4py</span><span class="w"> </span><span class="kn">import</span> <span class="n">MPI</span>
+<span class="hll"><span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">mpi4py.util.sync</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">Mutex</span>
+</span><span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">comm</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span>
+<span class="linenos"> 5</span>
+<span class="hll"><span class="linenos"> 6</span><span class="n">mutex</span> <span class="o">=</span> <span class="n">Mutex</span><span class="p">(</span><span class="n">comm</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos"> 7</span><span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">comm</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos"> 8</span><span class="k">with</span> <span class="n">mutex</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos"> 9</span>   <span class="n">value</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">10</span><span class="n">counter</span><span class="o">.</span><span class="n">free</span><span class="p">()</span>
+</span><span class="hll"><span class="linenos">11</span><span class="n">mutex</span><span class="o">.</span><span class="n">free</span><span class="p">()</span>
+</span><span class="linenos">12</span>
+<span class="linenos">13</span><span class="k">assert</span> <span class="p">(</span>
+<span class="linenos">14</span>   <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">comm</span><span class="o">.</span><span class="n">size</span><span class="p">))</span> <span class="o">==</span>
+<span class="linenos">15</span>   <span class="nb">sorted</span><span class="p">(</span><span class="n">comm</span><span class="o">.</span><span class="n">allgather</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+<span class="linenos">16</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/mpi4py.svg" alt="Logo of MPI for Python"/>
+            </a></p>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">mpi4py.util.sync</a><ul>
+<li><a class="reference internal" href="#sequential-execution">Sequential execution</a></li>
+<li><a class="reference internal" href="#global-counter">Global counter</a></li>
+<li><a class="reference internal" href="#mutual-exclusion">Mutual exclusion</a></li>
+<li><a class="reference internal" href="#condition-variable">Condition variable</a></li>
+<li><a class="reference internal" href="#semaphore-object">Semaphore object</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="mpi4py.util.pool.html"
+                          title="previous chapter">mpi4py.util.pool</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="mpi4py.run.html"
+                          title="next chapter">mpi4py.run</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpi4py.run.html" title="mpi4py.run"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mpi4py.util.pool.html" title="mpi4py.util.pool"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MPI for Python 4.1.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="mpi4py.util.html" >mpi4py.util</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">mpi4py.util.sync</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Lisandro Dalcin.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>
